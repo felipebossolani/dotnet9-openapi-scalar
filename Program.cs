@@ -1,3 +1,5 @@
+using dotnet9_openapi_scalar;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,29 +18,41 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.MapGet("/todos", () => TodoStore.GetAll());
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/todos/{id}", (Guid id) =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+    var todo = TodoStore.Get(id);
+    return todo is not null ? Results.Ok(todo) : Results.NotFound();
+});
+
+app.MapPost("/todos", (string title) =>
+{
+    var todo = TodoItem.Add(title);
+    TodoStore.Add(todo);
+    return Results.Created($"/todos/{todo.Id}", todo);
+});
+
+app.MapPut("/todos/{id}", (Guid id, TodoUpdateRequest request) =>
+{
+    var todo = TodoStore.Get(id);
+    if (todo is null)    
+        return Results.NotFound();
+
+    todo.Update(request.Title, request.IsComplete);
+    TodoStore.Update(todo);
+    return Results.Ok(todo); 
+});
+
+app.MapDelete("/todos/{id}", (Guid id) =>
+{
+    if (TodoStore.Get(id) is null)
+        return Results.NotFound();
+    TodoStore.Delete(id);
+    return Results.Ok();
+});
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+public record TodoInsertRequest(string Title);
+public record TodoUpdateRequest(string Title, bool IsComplete);
