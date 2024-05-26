@@ -5,7 +5,7 @@ VisualStudioVersion = 17.10.34607.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet9-openapi-scalar", "src\dotnet9-openapi-scalar.csproj", "{56251769-BAE9-4D41-A0CE-7530F6C5C1DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet9-openapi-scalar-test", "test\dotnet9-openapi-scalar-test\dotnet9-openapi-scalar-test.csproj", "{07E0F5FD-5DC5-41CC-8C57-367593DC04BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet9-openapi-scalar-test", "test\dotnet9-openapi-scalar-test.csproj", "{18BB0241-3F08-433E-B04D-92D6E17A2A03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{56251769-BAE9-4D41-A0CE-7530F6C5C1DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56251769-BAE9-4D41-A0CE-7530F6C5C1DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56251769-BAE9-4D41-A0CE-7530F6C5C1DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07E0F5FD-5DC5-41CC-8C57-367593DC04BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07E0F5FD-5DC5-41CC-8C57-367593DC04BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07E0F5FD-5DC5-41CC-8C57-367593DC04BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07E0F5FD-5DC5-41CC-8C57-367593DC04BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18BB0241-3F08-433E-B04D-92D6E17A2A03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18BB0241-3F08-433E-B04D-92D6E17A2A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18BB0241-3F08-433E-B04D-92D6E17A2A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18BB0241-3F08-433E-B04D-92D6E17A2A03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

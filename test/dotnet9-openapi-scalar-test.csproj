@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\dotnet9-openapi-scalar.csproj" />
+    <ProjectReference Include="..\src\dotnet9-openapi-scalar.csproj" />
   </ItemGroup>
 
   <ItemGroup>
