@@ -4,6 +4,13 @@ namespace dotnet9_openapi_scalar;
 
 public class TodoItem
 {
+    public TodoItem(Guid id, string title, bool isCompleted)
+    {
+        Id = id;
+        Title = title;  
+        IsCompleted = isCompleted;  
+    }
+
     public Guid Id { get; private set; }
     public string Title { get; private set; }
     public bool IsCompleted { get; private set; }

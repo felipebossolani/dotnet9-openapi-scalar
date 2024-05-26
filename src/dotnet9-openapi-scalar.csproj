@@ -4,7 +4,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>dotnet9_openapi_scalar</RootNamespace>
+    <RootNamespace>dotnet9_openapi_scalar</RootNamespace>    
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,8 +2,6 @@ using dotnet9_openapi_scalar;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -26,9 +24,9 @@ app.MapGet("/todos/{id}", (Guid id) =>
     return todo is not null ? Results.Ok(todo) : Results.NotFound();
 });
 
-app.MapPost("/todos", (string title) =>
+app.MapPost("/todos", (TodoInsertRequest request) =>
 {
-    var todo = TodoItem.Add(title);
+    var todo = TodoItem.Add(request.Title);
     TodoStore.Add(todo);
     return Results.Created($"/todos/{todo.Id}", todo);
 });
@@ -54,5 +52,8 @@ app.MapDelete("/todos/{id}", (Guid id) =>
 
 app.Run();
 
+public partial class Program { }
+
 public record TodoInsertRequest(string Title);
 public record TodoUpdateRequest(string Title, bool IsComplete);
+
