@@ -1,0 +1,6 @@
+@dotnet9_openapi_scalar_HostAddress = http://localhost:5191
+
+GET {{dotnet9_openapi_scalar_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
