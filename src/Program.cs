@@ -11,7 +11,7 @@ app.MapOpenApi();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapScalarApiReference();
+    app.MapScalarUi();
 }
 
 app.UseHttpsRedirection();
