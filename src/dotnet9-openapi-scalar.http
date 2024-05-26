@@ -1,6 +1,100 @@
-@dotnet9_openapi_scalar_HostAddress = http://localhost:5191
-
-GET {{dotnet9_openapi_scalar_HostAddress}}/weatherforecast/
+### Test to get all todos
+GET https://localhost:5001/todos
 Accept: application/json
 
 ###
+
+### Test to get a specific todo (success case)
+# First, add a todo to ensure it exists
+POST https://localhost:5001/todos
+Content-Type: application/json
+
+{
+  "title": "Learn .NET Minimal API"
+}
+
+###
+
+### Test to get a specific todo (using a valid ID returned from the previous request)
+GET https://localhost:5001/todos/{replace_with_valid_id}
+Accept: application/json
+
+###
+
+### Test to get a specific todo (failure case - todo does not exist)
+GET https://localhost:5001/todos/00000000-0000-0000-0000-000000000000
+Accept: application/json
+
+###
+
+### Test to add a new todo (success case)
+POST https://localhost:5001/todos
+Content-Type: application/json
+
+{
+  "title": "Finish API documentation"
+}
+
+###
+
+### Test to add a new todo (failure case - title missing)
+POST https://localhost:5001/todos
+Content-Type: application/json
+
+{
+  "title": ""
+}
+
+###
+
+### Test to update an existing todo (success case)
+# First, add a todo to ensure it exists
+POST https://localhost:5001/todos
+Content-Type: application/json
+
+{
+  "title": "Learn Advanced C#"
+}
+
+###
+
+# Use the ID returned from the above POST request for the request below
+PUT https://localhost:5001/todos/c8824403-a929-4f06-9faa-a4b15be2678d
+Content-Type: application/json
+
+{
+  "title": "Learn Advanced C# and .NET Core",
+  "isComplete": true
+}
+
+###
+
+### Test to update a todo (failure case - todo does not exist)
+PUT https://localhost:5001/todos/00000000-0000-0000-0000-000000000000
+Content-Type: application/json
+
+{
+  "title": "Non-existent todo",
+  "isComplete": false
+}
+
+###
+
+### Test to delete an existing todo (success case)
+# First, add a todo to ensure it exists
+POST https://localhost:5001/todos
+Content-Type: application/json
+
+{
+  "title": "To be deleted"
+}
+
+###
+
+# Use the ID returned from the above POST request for the request below
+DELETE https://localhost:5001/todos/{replace_with_valid_id}
+
+###
+
+### Test to delete a todo (failure case - todo does not exist)
+DELETE https://localhost:5001/todos/00000000-0000-0000-0000-000000000000
